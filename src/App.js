@@ -97,6 +97,14 @@ const movies = {
   },
 };
 
+const ListItem = ({userID, movieID}) => {
+  const user = users[userID].name;
+  const movie = movies[movieID].name;
+  return (
+    <li>{user}'s favorite movie is {movie}.</li>
+  )
+}
+
 class App extends Component {
   render() {
     return (
@@ -106,6 +114,13 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <h2>Favorite Movies</h2>
+        <ul>
+          {profiles.map(profile => (
+            <ListItem 
+              userID={profile.userID} 
+              movieID={profile.favoriteMovieID}/>
+          ))}
+        </ul>
       </div>
     );
   }
